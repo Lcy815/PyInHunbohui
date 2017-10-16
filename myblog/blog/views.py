@@ -64,7 +64,8 @@ class IndexViews(ListView):
         return context
 
     # 获取分页所需要的数据
-    def pagination_data(self, paginator, page, is_paginated):
+    @staticmethod
+    def pagination_data(paginator, page, is_paginated):
 
         if not is_paginated:
             return {}
