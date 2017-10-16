@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+import markdown
+from django.utils.html import strip_tags
 # Create your models here.
 
 
@@ -56,6 +58,20 @@ class Post(models.Model):
     # 摘要，可以没有摘要，因此要设置可以为空
     excerpt = models.CharField(max_length=200, blank=True)
 
+    # 复写save方法，在存入数据库前先从body中截取多少字存为摘要
+    def save(self, *args, **kwargs):
+        if not self.excerpt:
+            # 因为我们的文章主体使用了支持markdown语法，所以先实例化一个markdown实例
+            md = markdown.Markdown(extensions=[
+                'markdown.extensions.extra',
+                'markdown.extensions.codehilite',
+            ])
+            # 先将markdown文本渲染成html格式，再用strip去除所有html标签，取前54个字符
+            self.excerpt = strip_tags(md.convert(self.body))[:54]
+        # 调用父类的方法 保存到数据库
+        super(Post, self).save(*args, **kwargs)
+
+
     # 这是分类与标签，分类与标签的模型我们已经定义在上面。
     # 我们在这里把文章对应的数据库表和分类、标签对应的数据库表关联了起来，但是关联形式稍微有点不同。
     # 我们规定一篇文章只能对应一个分类，但是一个分类下可以有多篇文章，所以我们使用的是 ForeignKey，即一对多的关联关系。
@@ -76,7 +92,8 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'pk': self.pk})
 
-
+    class Meta:
+        ordering = ['-create_time']
 
 
 
