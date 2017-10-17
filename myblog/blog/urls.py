@@ -12,6 +12,8 @@ urlpatterns = [
     # url(r'^category/(?P<name>.+)/$', views.category, name='category'),
     url(r'^category/(?P<name>.+)/$', views.CategoryViews.as_view(), name='category'),
     url(r'^index$', views.IndexViews.as_view(), name='index'),
+    url(r'^tag/(?P<name>.+)/$', views.TagViews.as_view(), name='tag'),
+    # url(r'^search/$', views.search, name='search'),
 ]
 
 

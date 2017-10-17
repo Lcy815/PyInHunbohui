@@ -6,11 +6,11 @@ from django.http import HttpResponse
 import markdown
 from .models import Category
 # Create your views here.
-from blog.models import Post
+from blog.models import Post, Tag
 from comments.forms import CommentForm
 # 导入listview
 from django.views.generic import ListView
-from django.views.generic import DetailView
+from django.db.models import Q
 
 
 # def index(request):
@@ -154,11 +154,19 @@ class IndexViews(ListView):
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.increase_views()
-    post.body = markdown.markdown(post.body, extensions={
+    # post.body = markdown.markdown(post.body, extensions={
+    #     'markdown.extensions.extra',
+    #     'markdown.extensions.codehilite',
+    #     'markdown.extensions.toc',
+    # })
+    md = markdown.Markdown(extensions={
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',
         'markdown.extensions.toc',
+        # TocExtension(slugify=slugify),
     })
+    post.body = md.convert(post.body)
+    post.toc = md.toc
     form = CommentForm()
     comment_list = post.comment_set.all()
     content = {
@@ -169,13 +177,13 @@ def detail(request, pk):
     return render(request, 'blog/detail.html', context=content)
 
 
-def archives(request, year, month):
-    post_list = Post.objects.filter(create_time__year=year,
-                                    create_time__month=month
-                                    ).order_by('-create_time')
-    return render(request, 'blog/index.html', context={
-        'post_list': post_list
-    })
+# def archives(request, year, month):
+#     post_list = Post.objects.filter(create_time__year=year,
+#                                     create_time__month=month
+#                                     ).order_by('-create_time')
+#     return render(request, 'blog/index.html', context={
+#         'post_list': post_list
+#     })
 
 
 # 将归档修改为listview函数
@@ -183,6 +191,7 @@ class ArchivesViews(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
+    paginate_by = 2
 
     def get_queryset(self):
         return super(ArchivesViews, self).get_queryset().filter(create_time__year=self.kwargs.get('year'),
@@ -204,7 +213,45 @@ class CategoryViews(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
+    paginate_by = 2
 
     def get_queryset(self):
         cate = get_object_or_404(Category, name=self.kwargs.get('name'))
         return super(CategoryViews, self).get_queryset().filter(category=cate)
+
+    def get_context_data(self, **kwargs):
+        # 首先获取父类传递给模版的字典
+        context = super(CategoryViews, self).get_context_data(**kwargs)
+        paginator = context.get('paginator')
+        page_obj = context.get('page_obj')
+        is_paginated = context.get('is_paginated')
+
+        # 调用pagination_data方法获取相应的数据
+        pagination_data = IndexViews().pagination_data(paginator, page_obj, is_paginated)
+
+        # 将分类导航数据添加到context中
+        context.update(pagination_data)
+        return context
+
+
+# TagViews
+class TagViews(ListView):
+    model = Post
+    template_name = 'blog/index.html'
+    context_object_name = 'post_list'
+
+    def get_queryset(self):
+        tag_post = get_object_or_404(Tag, tag_name=self.kwargs.get('name'))
+        return super(TagViews, self).get_queryset().filter(tags=tag_post)
+
+
+# 搜索
+def search(request):
+    q = request.GET.get('q')
+    err_message = ''
+
+    if not q:
+        err_message = 'please enter a search word'
+        return render(request, 'blog/index.html', context={'err_message': err_message})
+    post_list = Post.objects.all().filter(Q(title__icontains=q) | Q(body__icontains=q))
+    return render(request, 'blog/index.html', context={'post_list': post_list, 'err_message': err_message})

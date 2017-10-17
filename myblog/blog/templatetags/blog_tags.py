@@ -1,7 +1,7 @@
 # coding=utf-8
-from ..models import Post, Category
+from ..models import Post, Category,Tag
 from django import template
-
+from django.db.models.aggregates import Count
 register = template.Library()
 
 
@@ -20,6 +20,11 @@ def get_archives():
 # 分类模版标签
 @register.simple_tag
 def get_category():
-    return Category.objects.all()
+    return Category.objects.annotate(num_post=Count('post')).filter(num_post__gt=0)
 
+
+# 标签云
+@register.simple_tag()
+def get_tags():
+    return Tag.objects.all()
 
