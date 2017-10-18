@@ -22,6 +22,10 @@ class Category(models.Model):
     """
     name = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name = '分类'
+        verbose_name_plural = '分类'
+
     def __unicode__(self):
         return self.name
 
@@ -29,6 +33,10 @@ class Category(models.Model):
 # 文章标签
 class Tag(models.Model):
     tag_name = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name = '标签'
+        verbose_name_plural = '标签'
 
     def __unicode__(self):
         return self.tag_name
@@ -94,6 +102,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-create_time']
+        verbose_name = '文章'
+        verbose_name_plural = '文章'
 
 
 
