@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^index$', views.IndexViews.as_view(), name='index'),
     url(r'^tag/(?P<name>.+)/$', views.TagViews.as_view(), name='tag'),
     # url(r'^search/$', views.search, name='search'),
+    url(r'^blog/$', views.blog, name='blog'),
 ]
 
 

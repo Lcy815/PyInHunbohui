@@ -255,3 +255,7 @@ def search(request):
         return render(request, 'blog/index.html', context={'err_message': err_message})
     post_list = Post.objects.all().filter(Q(title__icontains=q) | Q(body__icontains=q))
     return render(request, 'blog/index.html', context={'post_list': post_list, 'err_message': err_message})
+
+
+def blog(request):
+    return render(request, 'blog/full-width.html')

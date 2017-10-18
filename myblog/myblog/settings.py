@@ -41,7 +41,14 @@ INSTALLED_APPS = [
     'blog',
     'comments',
 ]
-
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'blog.whoosh_cn_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 1
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -124,13 +131,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
+# TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'blog.whoosh_cn_backend.WhooshEngine',
-        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
-    },
-}
-HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
