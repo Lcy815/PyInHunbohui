@@ -1,0 +1,11 @@
+---
+DataDrivenType:
+    Tpye: excel
+    Location:
+Mysql:
+    Type:
+    Host:
+    Port:
+    User:
+    Password:
+
