@@ -1,0 +1,19 @@
+---
+DataDrivenType:
+    Type: excel
+    Location:
+Mysql:
+    Type:
+    Host:
+    Port:
+    User:
+    Password:
+Http:
+    Host:
+Mail:
+    Host:
+    Port:
+    From_address:
+    To_address:
+    Mail_pass:
+
