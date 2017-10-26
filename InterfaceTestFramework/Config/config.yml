@@ -1,7 +1,6 @@
 ---
-DataDrivenType:
-    Type: excel
-    Location:
+ExcelDataDriven:
+    Filepath: C:\\Users\\Administrator\\Desktop\\test.xlsx
 Mysql:
     Type:
     Host:
@@ -9,7 +8,7 @@ Mysql:
     User:
     Password:
 Http:
-    Host:
+    Host: http://api.wenxianghao.hapn.cc
 Mail:
     Host:
     Port:

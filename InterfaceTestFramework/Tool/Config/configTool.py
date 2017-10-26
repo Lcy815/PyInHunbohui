@@ -31,7 +31,7 @@ class ConfigTool(object):
         :return:        string格式信息
         '''
         file_path = ROOT + path
-        config = yaml.load(file(file_path, 'r'))
+        config = yaml.load(open(file_path, 'r'))
         return str(config[section][option])
 
     @classmethod

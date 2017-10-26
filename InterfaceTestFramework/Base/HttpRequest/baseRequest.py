@@ -2,6 +2,8 @@
 import requests
 import sys
 import io
+from Tool.Config.configTool import ConfigTool
+
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')
 
 '''
@@ -26,23 +28,34 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')
 
 class RequestHttp(object):
     @classmethod
-    def request_data(cls, method, url, param=None):
+    def get(cls, name, config_section='Http', param=None):
         try:
-            response = requests.request(method, url, params=param)
+            host = ConfigTool.get(config_section, 'Host')
+            url = host + '/' + name
+            response = requests.get(url, params=param)
             return response.json()
         except Exception as e:
             print('返回状态 %s' % response)
             print('错误：%s' % e)
 
+    @classmethod
+    def post(cls, name, config_section='Http', data=None):
+        try:
+            host = ConfigTool.get(config_section, 'Host')
+            url = host + '/' + name
+            response = requests.post(url, data=data)
+            return response.json()
+        except Exception as e:
+            print('返回状态 %s' % response)
+            print('错误：%s' % e)
 
-params ={
+params={
 "city_id" : "110900",
-"access_token" : "ARRNOLiM9awMBlJ0eyj7GVgaGjisjPWsDA1UYnwu9wNLGAlz8Iy751BRRHZ8Lf8VTQABYeSXsqgPUFF5Lnn4TEgBXWO4yve9CAFeKSwr/BRDAQpkuJf2ug==",
+"access_token" : "",
 "client_guid" : "3232235777",
-"client_timestamp" : 1508749593,
+"client_timestamp" : 1508987550,
 "app_id" : 10011,
 "client_version" : "1.0.1",
-"app_usign" : "fpoTP7xSQ0KAEatqQ99au991QmU="
+"app_usign" : "suKJ9ipT42QKgqWnnrwfz2y/QNo=",
 }
-print(RequestHttp.request_data('GET', 'http://api.zanju.hapn.cc/common/channel/hunlifuwu/index?_d=1'))
-
+print(RequestHttp.get('common/channel/hunlifuwu/index', param=params))
