@@ -10,6 +10,17 @@ EXCEL_PATH = ConfigTool.get('ExcelDataDriven', 'Filepath')
 class TestModel(object):
 
     def __init__(self, number, method, design, name, params, check_value, result, response):
+        '''
+             测试案例model
+        :param number:     案例编号
+        :param method:     请求方法
+        :param design:     案例设计（缺参，少参，正常传参等）
+        :param name:       模块名称
+        :param params:     请求参数
+        :param check_value: 检查请求某个值
+        :param result:      执行结果
+        :param response:    返回数据
+        '''
         self.number = number
         self.method = method
         self.name = name
@@ -24,6 +35,11 @@ class ExcelTool(object):
 
     @classmethod
     def read_all_excel(cls, sheet_name):
+        '''
+           获取表格内案例model
+        :param sheet_name:  表名
+        :return:  返回 案例列表
+        '''
         wb = openpyxl.load_workbook(EXCEL_PATH)
         sheet = wb.get_sheet_by_name(sheet_name)
 
