@@ -50,7 +50,7 @@ class RequestHttp(object):
             print('错误：%s' % e)
 
 params={
-"city_id" : "110900",
+"city_id" : "11090",
 "access_token" : "",
 "client_guid" : "3232235777",
 "client_timestamp" : 1508987550,

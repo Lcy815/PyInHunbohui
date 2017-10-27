@@ -6,43 +6,48 @@ import openpyxl
 EXCEL_PATH = ConfigTool.get('ExcelDataDriven', 'Filepath')
 
 
-class ExcelTool(object):
-
-    @classmethod
-    def read_excel(cls):
-        wb = openpyxl.load_workbook(EXCEL_PATH)
-        sheet = wb.get_sheet_by_name('test')
-
-        for m, row in enumerate(sheet.rows):
-            # 去除表头
-            if m > 0:
-                for index, cell in enumerate(row):
-                    pass
-
-
 # 测试案例model类
 class TestModel(object):
 
-    def __init__(self, number, name, method, params, expect_result, actual_result, response, test_result):
-        '''
-           测试案例model
-        :param number:         测试编号
-        :param name:           接口模块名
-        :param method:         请求方法 GET POST
-        :param params:         请求参数
-        :param expect_result:  期望结果
-        :param actual_result:
-        :param response:
-        :param test_result:
-        '''
+    def __init__(self, number, method, design, name, params, check_value, result, response):
         self.number = number
-        self.name = name
         self.method = method
+        self.name = name
+        self.design = design
         self.params = params
-        self.expect_result = expect_result
-        self.actual_result = actual_result
+        self.check_value = check_value
+        self.result = result
         self.response = response
-        self.test_result = test_result
+
+
+class ExcelTool(object):
+
+    @classmethod
+    def read_all_excel(cls, sheet_name):
+        wb = openpyxl.load_workbook(EXCEL_PATH)
+        sheet = wb.get_sheet_by_name(sheet_name)
+
+        value_list = []
+        model_list = []
+        for m, row in enumerate(sheet.rows):
+            # 去除表头
+            if m > 0:
+                for cell in row:
+                    model_list.append(cell.value)
+                case_model = TestModel(model_list[0], model_list[1], model_list[2], model_list[3], model_list[4],
+                                       model_list[5], model_list[6], model_list[7])
+                value_list.append(case_model)
+                model_list = []
+        return value_list
+
+    @classmethod
+    def write_excel(cls):
+        pass
+# print(ExcelTool.read_all_excel('test'))
+for case in ExcelTool.read_all_excel('test'):
+    print(case.name)
+
+
 
 
 
