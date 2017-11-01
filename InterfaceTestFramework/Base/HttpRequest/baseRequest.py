@@ -31,11 +31,11 @@ class RequestHttp(object):
     def get(cls, name, config_section='Http', param=None):
         try:
             host = ConfigTool.get(config_section, 'Host')
-            url = host + '/' + name
+            url = host + name
             response = requests.get(url, params=param)
+            print(response.url)
             return response.json()
         except Exception as e:
-            print('返回状态 %s' % response)
             print('错误：%s' % e)
 
     @classmethod
@@ -46,16 +46,15 @@ class RequestHttp(object):
             response = requests.post(url, data=data)
             return response.json()
         except Exception as e:
-            print('返回状态 %s' % response)
             print('错误：%s' % e)
 
 params={
-"city_id" : "11090",
+"city_id" : "110900",
 "access_token" : "",
-"client_guid" : "3232235777",
-"client_timestamp" : 1508987550,
+"client_guid" : 3232235777,
+"client_timestamp" : 1509415724,
 "app_id" : 10011,
 "client_version" : "1.0.1",
-"app_usign" : "suKJ9ipT42QKgqWnnrwfz2y/QNo=",
+"app_usign" : "avdjMd3Lx930nKrZTSeQE/caSSw=",
 }
-print(RequestHttp.get('common/channel/hunlifuwu/index', param=params))
+print(RequestHttp.get('/common/channel/hunlifuwu/index', param=params))

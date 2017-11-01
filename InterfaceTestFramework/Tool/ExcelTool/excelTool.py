@@ -1,9 +1,12 @@
 # encoding=utf-8
 from Tool.Config.configTool import ConfigTool
 import json
+from Base.HttpRequest.baseRequest import RequestHttp
+
 # 读写2007 excel xlsx结尾
 import openpyxl
 EXCEL_PATH = ConfigTool.get('ExcelDataDriven', 'Filepath')
+TEST_SHEET = ConfigTool.get('ExcelDataDriven', 'TestSheet')
 
 
 # 测试案例model类
@@ -34,14 +37,14 @@ class TestModel(object):
 class ExcelTool(object):
 
     @classmethod
-    def read_all_excel(cls, sheet_name):
+    def read_excel(cls):
         '''
            获取表格内案例model
         :param sheet_name:  表名
         :return:  返回 案例列表
         '''
         wb = openpyxl.load_workbook(EXCEL_PATH)
-        sheet = wb.get_sheet_by_name(sheet_name)
+        sheet = wb.get_sheet_by_name(TEST_SHEET)
 
         value_list = []
         model_list = []
@@ -60,8 +63,10 @@ class ExcelTool(object):
     def write_excel(cls):
         pass
 # print(ExcelTool.read_all_excel('test'))
-for case in ExcelTool.read_all_excel('test'):
-    print(case.name)
+for case in ExcelTool.read_excel():
+    if case.method == 'GET':
+        print(RequestHttp.get(case.name, param=case.params))
+
 
 
 

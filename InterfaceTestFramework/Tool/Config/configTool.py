@@ -44,7 +44,8 @@ class ConfigTool(object):
         :return:        string格式信息
         '''
         file_path = ROOT + path
-        config = yaml.load(file(file_path, 'r'))
+        f = open(file_path)
+        config = yaml.load(f)
         return int(config[section][option])
 
 

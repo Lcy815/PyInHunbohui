@@ -1,6 +1,7 @@
 ---
 ExcelDataDriven:
-    Filepath: C:\\Users\\Administrator\\Desktop\\test.xlsx
+    Filepath: C:\Users\Administrator\Desktop\test.xlsx
+    TestSheet:  test
 Mysql:
     Type:
     Host:
