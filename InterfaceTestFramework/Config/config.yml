@@ -16,4 +16,5 @@ Mail:
     From_address:
     To_address:
     Mail_pass:
-
+Log:
+    Path: E:\apiLog\api.log
