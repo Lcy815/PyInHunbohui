@@ -3,6 +3,8 @@ import requests
 import sys
 import io
 from Tool.Config.configTool import ConfigTool
+from Tool.Logger.logTool import LogTool
+import time
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')
 
@@ -27,26 +29,51 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')
 
 
 class RequestHttp(object):
+
     @classmethod
     def get(cls, name, config_section='Http', param=None):
+        host = ConfigTool.get(config_section, 'Host')
+        url = host + name
+        LogTool.info('Start to  GET {url}'.format(url=url))
+        LogTool.debug('kwargs : {params}'.format(params=param))
+
+        start_time = time.time()
+        response = requests.get(url, params=param)
+        response_time = int(time.time() - start_time)
+
+        LogTool.debug('response: {response}'.format(response=response))
+
         try:
-            host = ConfigTool.get(config_section, 'Host')
-            url = host + name
-            response = requests.get(url, params=param)
-            print(response.url)
-            return response.json()
+            response.raise_for_status()
         except Exception as e:
-            print('错误：%s' % e)
+            LogTool.error('Faild GET {url} ! Status_code : {code}Exception msg: {e}'.format(url=url, code=response.status_code, e=e))
+        else:
+            LogTool.info('Finish request! status_code: {code} response_time: {time}ms'.format(code=response.status_code, time=response_time))
+        return response.json()
 
     @classmethod
     def post(cls, name, config_section='Http', data=None):
+        host = ConfigTool.get(config_section, 'Host')
+        url = host + name
+        LogTool.info('Start to  POST {url}'.format(url=url))
+        LogTool.debug('params : {params}'.format(params=data))
+
+        start_time = time.time()
+        response = requests.post(url, data=data)
+        response_time = int(time.time() - start_time)
+
+        LogTool.debug('response: {response}'.format(response=response))
+
         try:
-            host = ConfigTool.get(config_section, 'Host')
-            url = host + '/' + name
-            response = requests.post(url, data=data)
-            return response.json()
+            response.raise_for_status()
         except Exception as e:
-            print('错误：%s' % e)
+            LogTool.error(
+                'Faild POST {url} ! Status_code : {code}Exception msg: {e}'.format(url=url, code=response.status_code,
+                                                                                   e=e))
+        else:
+            LogTool.info('Finish request! status_code: {code} response_time: {time}ms'.format(code=response.status_code,
+                                                                                              time=response_time))
+        return response.json()
 
 params={
 "city_id" : "110900",

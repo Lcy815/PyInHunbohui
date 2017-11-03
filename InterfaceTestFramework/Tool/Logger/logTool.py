@@ -1,33 +1,34 @@
+# encoding=utf-8
 import logging
 from Tool.Config.configTool import ConfigTool
 
 
 class LogTool(object):
     '''
-      logging.basicConfig()º¯ÊıÖĞ¿ÉÍ¨¹ı¾ßÌå²ÎÊıÀ´¸ü¸ÄloggingÄ£¿éÄ¬ÈÏĞĞÎª£¬¿ÉÓÃ²ÎÊıÓĞ
-      filename£ºÓÃÖ¸¶¨µÄÎÄ¼şÃû´´½¨FiledHandler£¨ºó±ß»á¾ßÌå½²½âhandlerµÄ¸ÅÄî£©£¬ÕâÑùÈÕÖ¾»á±»´æ´¢ÔÚÖ¸¶¨µÄÎÄ¼şÖĞ¡£
-      filemode£ºÎÄ¼ş´ò¿ª·½Ê½£¬ÔÚÖ¸¶¨ÁËfilenameÊ±Ê¹ÓÃÕâ¸ö²ÎÊı£¬Ä¬ÈÏÖµÎª¡°a¡±»¹¿ÉÖ¸¶¨Îª¡°w¡±¡£
-      format£ºÖ¸¶¨handlerÊ¹ÓÃµÄÈÕÖ¾ÏÔÊ¾¸ñÊ½¡£
-      datefmt£ºÖ¸¶¨ÈÕÆÚÊ±¼ä¸ñÊ½¡£
-      level£ºÉèÖÃrootlogger£¨ºó±ß»á½²½â¾ßÌå¸ÅÄî£©µÄÈÕÖ¾¼¶±ğ
-      stream£ºÓÃÖ¸¶¨µÄstream´´½¨StreamHandler¡£¿ÉÒÔÖ¸¶¨Êä³öµ½sys.stderr,sys.stdout»òÕßÎÄ¼ş£¬Ä¬ÈÏÎªsys.stderr¡£ÈôÍ¬Ê±ÁĞ³öÁËfilenameºÍstreamÁ½¸ö²ÎÊı£¬Ôòstream²ÎÊı»á±»ºöÂÔ¡£
+      logging.basicConfig()å‡½æ•°ä¸­å¯é€šè¿‡å…·ä½“å‚æ•°æ¥æ›´æ”¹loggingæ¨¡å—é»˜è®¤è¡Œä¸ºï¼Œå¯ç”¨å‚æ•°æœ‰
+      filenameï¼šç”¨æŒ‡å®šçš„æ–‡ä»¶ååˆ›å»ºFiledHandlerï¼Œè¿™æ ·æ—¥å¿—ä¼šè¢«å­˜å‚¨åœ¨æŒ‡å®šçš„æ–‡ä»¶ä¸­ã€‚
+      filemodeï¼šæ–‡ä»¶æ‰“å¼€æ–¹å¼ï¼Œåœ¨æŒ‡å®šäº†filenameæ—¶ä½¿ç”¨è¿™ä¸ªå‚æ•°ï¼Œé»˜è®¤å€¼ä¸ºâ€œaâ€è¿˜å¯æŒ‡å®šä¸ºâ€œwâ€ã€‚
+      formatï¼šæŒ‡å®šhandlerä½¿ç”¨çš„æ—¥å¿—æ˜¾ç¤ºæ ¼å¼ã€‚
+      datefmtï¼šæŒ‡å®šæ—¥æœŸæ—¶é—´æ ¼å¼ã€‚
+      levelï¼šè®¾ç½®rootloggerçš„æ—¥å¿—çº§åˆ«
+      streamï¼šç”¨æŒ‡å®šçš„streamåˆ›å»ºStreamHandlerã€‚å¯ä»¥æŒ‡å®šè¾“å‡ºåˆ°sys.stderr,sys.stdoutæˆ–è€…æ–‡ä»¶ï¼Œé»˜è®¤ä¸ºsys.stderrã€‚è‹¥åŒæ—¶åˆ—å‡ºäº†filenameå’Œstreamä¸¤ä¸ªå‚æ•°ï¼Œåˆ™streamå‚æ•°ä¼šè¢«å¿½ç•¥ã€‚
 
-      format²ÎÊıÖĞ¿ÉÄÜÓÃµ½µÄ¸ñÊ½»¯´®£º
-       %(name)s LoggerµÄÃû×Ö
-       %(levelno)s Êı×ÖĞÎÊ½µÄÈÕÖ¾¼¶±ğ
-       %(levelname)s ÎÄ±¾ĞÎÊ½µÄÈÕÖ¾¼¶±ğ
-       %(pathname)s µ÷ÓÃÈÕÖ¾Êä³öº¯ÊıµÄÄ£¿éµÄÍêÕûÂ·¾¶Ãû£¬¿ÉÄÜÃ»ÓĞ
-       %(filename)s µ÷ÓÃÈÕÖ¾Êä³öº¯ÊıµÄÄ£¿éµÄÎÄ¼şÃû
-       %(module)s µ÷ÓÃÈÕÖ¾Êä³öº¯ÊıµÄÄ£¿éÃû
-       %(funcName)s µ÷ÓÃÈÕÖ¾Êä³öº¯ÊıµÄº¯ÊıÃû
-       %(lineno)d µ÷ÓÃÈÕÖ¾Êä³öº¯ÊıµÄÓï¾äËùÔÚµÄ´úÂëĞĞ
-       %(created)f µ±Ç°Ê±¼ä£¬ÓÃUNIX±ê×¼µÄ±íÊ¾Ê±¼äµÄ¸¡ µãÊı±íÊ¾
-       %(relativeCreated)d Êä³öÈÕÖ¾ĞÅÏ¢Ê±µÄ£¬×ÔLogger´´½¨ÒÔ À´µÄºÁÃëÊı
-       %(asctime)s ×Ö·û´®ĞÎÊ½µÄµ±Ç°Ê±¼ä¡£Ä¬ÈÏ¸ñÊ½ÊÇ ¡°2003-07-08 16:49:45,896¡±¡£¶ººÅºóÃæµÄÊÇºÁÃë
-       %(thread)d Ïß³ÌID¡£¿ÉÄÜÃ»ÓĞ
-       %(threadName)s Ïß³ÌÃû¡£¿ÉÄÜÃ»ÓĞ
-       %(process)d ½ø³ÌID¡£¿ÉÄÜÃ»ÓĞ
-       %(message)sÓÃ»§Êä³öµÄÏûÏ¢
+      formatå‚æ•°ä¸­å¯èƒ½ç”¨åˆ°çš„æ ¼å¼åŒ–ä¸²ï¼š
+       %(name)s Loggerçš„åå­—
+       %(levelno)s æ•°å­—å½¢å¼çš„æ—¥å¿—çº§åˆ«
+       %(levelname)s æ–‡æœ¬å½¢å¼çš„æ—¥å¿—çº§åˆ«
+       %(pathname)s è°ƒç”¨æ—¥å¿—è¾“å‡ºå‡½æ•°çš„æ¨¡å—çš„å®Œæ•´è·¯å¾„åï¼Œå¯èƒ½æ²¡æœ‰
+       %(filename)s è°ƒç”¨æ—¥å¿—è¾“å‡ºå‡½æ•°çš„æ¨¡å—çš„æ–‡ä»¶å
+       %(module)s è°ƒç”¨æ—¥å¿—è¾“å‡ºå‡½æ•°çš„æ¨¡å—å
+       %(funcName)s è°ƒç”¨æ—¥å¿—è¾“å‡ºå‡½æ•°çš„å‡½æ•°å
+       %(lineno)d è°ƒç”¨æ—¥å¿—è¾“å‡ºå‡½æ•°çš„è¯­å¥æ‰€åœ¨çš„ä»£ç è¡Œ
+       %(created)f å½“å‰æ—¶é—´ï¼Œç”¨UNIXæ ‡å‡†çš„è¡¨ç¤ºæ—¶é—´çš„æµ® ç‚¹æ•°è¡¨ç¤º
+       %(relativeCreated)d è¾“å‡ºæ—¥å¿—ä¿¡æ¯æ—¶çš„ï¼Œè‡ªLoggeråˆ›å»ºä»¥ æ¥çš„æ¯«ç§’æ•°
+       %(asctime)s å­—ç¬¦ä¸²å½¢å¼çš„å½“å‰æ—¶é—´ã€‚é»˜è®¤æ ¼å¼æ˜¯ â€œ2003-07-08 16:49:45,896â€ã€‚é€—å·åé¢çš„æ˜¯æ¯«ç§’
+       %(thread)d çº¿ç¨‹IDã€‚å¯èƒ½æ²¡æœ‰
+       %(threadName)s çº¿ç¨‹åã€‚å¯èƒ½æ²¡æœ‰
+       %(process)d è¿›ç¨‹IDã€‚å¯èƒ½æ²¡æœ‰
+       %(message)sç”¨æˆ·è¾“å‡ºçš„æ¶ˆæ¯
     '''
     file_path = ConfigTool.get('Log', 'Path')
     logging.basicConfig(level=logging.DEBUG,
@@ -36,19 +37,24 @@ class LogTool(object):
                         filename=file_path,
                         filemode='w')
 
-    def debug(self, message):
+    @classmethod
+    def debug(cls, message):
         logging.debug(message)
 
-    def info(self, message):
+    @classmethod
+    def info(cls, message):
         logging.info(message)
 
-    def warning(self, message):
+    @classmethod
+    def warning(cls, message):
         logging.warning(message)
 
-    def error(self, message):
+    @classmethod
+    def error(cls, message):
         logging.error(message)
 
-    def critical(self, message):
+    @classmethod
+    def critical(cls, message):
         logging.critical(message)
 
 

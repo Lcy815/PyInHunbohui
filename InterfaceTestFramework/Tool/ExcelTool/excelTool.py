@@ -12,7 +12,7 @@ TEST_SHEET = ConfigTool.get('ExcelDataDriven', 'TestSheet')
 # 测试案例model类
 class TestModel(object):
 
-    def __init__(self, number, method, design, name, params, check_value, result, response):
+    def __init__(self, number, method, design, name, params, check_value, check_type, result, response):
         '''
              测试案例model
         :param number:     案例编号
@@ -20,7 +20,8 @@ class TestModel(object):
         :param design:     案例设计（缺参，少参，正常传参等）
         :param name:       模块名称
         :param params:     请求参数
-        :param check_value: 检查请求某个值
+        :param check_value: 检查请值
+        :param check_type:  检查类型（equal,contains,uncontains）
         :param result:      执行结果
         :param response:    返回数据
         '''
@@ -30,6 +31,7 @@ class TestModel(object):
         self.design = design
         self.params = params
         self.check_value = check_value
+        self.check_type = check_type
         self.result = result
         self.response = response
 
@@ -53,8 +55,9 @@ class ExcelTool(object):
             if m > 0:
                 for cell in row:
                     model_list.append(cell.value)
+                # 创建案例model
                 case_model = TestModel(model_list[0], model_list[1], model_list[2], model_list[3], model_list[4],
-                                       model_list[5], model_list[6], model_list[7])
+                                       model_list[5], model_list[6], model_list[7], model_list[8])
                 value_list.append(case_model)
                 model_list = []
         return value_list
