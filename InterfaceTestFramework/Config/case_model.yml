@@ -1,0 +1,41 @@
+CASE_CONFIG:
+    write_to_excel: yes
+    excel_path:
+    sheet_name:
+
+TEST_CASE:
+  - number: 1
+    method: GET
+    execute: 1
+    design: 正常参数
+    name: /common/channel/hunlifuwu/index
+    params:
+        city_id: 110900
+        access_token:
+        client_guid: 3232235777
+        client_timestamp: 1509415724
+        app_id: 10011
+        client_version: 1.0.1
+        app_usign: avdjMd3Lx930nKrZTSeQE/caSSw=
+    check_value: err=hapn.ok,title=喜铺
+    check_type: contains
+    result:
+    response:
+  - number: 2
+    method: GET
+    execute: 1
+    design: 正常参数
+    name: /common/channel/hunlifuwu/index
+    params:
+        city_id: 110900
+        access_token:
+        client_guid: 3232235777
+        client_timestamp: 1509415724
+        app_id: 10011
+        client_version: 1.0.1
+        app_usign: avdjMd3Lx930nKrZTSeQE/caSSw=
+    check_value: err=hapn.ok,title=喜铺
+    check_type: contains
+    result:
+    response:
+

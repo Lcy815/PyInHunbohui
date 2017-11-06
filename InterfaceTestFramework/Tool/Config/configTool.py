@@ -48,6 +48,15 @@ class ConfigTool(object):
         config = yaml.load(f)
         return int(config[section][option])
 
+    @classmethod
+    def get_case(cls, path):
+        file_path = ROOT + path
+        f = open(file_path)
+        data = yaml.load(f)
+        return data['TEST_CASE']
+
+datas = ConfigTool.get_case('/Config/case_model.yml')
+print(datas)
 
 
 

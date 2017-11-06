@@ -1,15 +1,16 @@
 ---
-ExcelDataDriven:
-    Filepath: C:\Users\Administrator\Desktop\test.xlsx
-    TestSheet:  test
-Mysql:
-    Type:
-    Host:
-    Port:
-    User:
-    Password:
+DataDriven:
+  - excel:
+       filePath: C:\Users\Administrator\Desktop\test.xlsx
+       testSheet:  test
+  - mysql:
+       type:
+       host:
+       port:
+       user:
+       password:
 Http:
-    Host: http://api.wenxianghao.hapn.cc
+    Host: http://api.jh.hunbasha.cn
 Mail:
     Host:
     Port:

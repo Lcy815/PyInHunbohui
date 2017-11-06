@@ -39,6 +39,7 @@ class RequestHttp(object):
 
         start_time = time.time()
         response = requests.get(url, params=param)
+        print(response.url)
         response_time = int(time.time() - start_time)
 
         LogTool.debug('response: {response}'.format(response=response))
@@ -46,10 +47,10 @@ class RequestHttp(object):
         try:
             response.raise_for_status()
         except Exception as e:
-            LogTool.error('Faild GET {url} ! Status_code : {code}Exception msg: {e}'.format(url=url, code=response.status_code, e=e))
+            LogTool.error('Faild GET {url} ! Status_code : {code} ！Exception msg: {e}'.format(url=url, code=response.status_code, e=e))
         else:
-            LogTool.info('Finish request! status_code: {code} response_time: {time}ms'.format(code=response.status_code, time=response_time))
-        return response.json()
+            LogTool.info('Finish request! status_code: {code} response_time: {time}s'.format(code=response.status_code, time=response_time))
+        return response
 
     @classmethod
     def post(cls, name, config_section='Http', data=None):
@@ -73,15 +74,6 @@ class RequestHttp(object):
         else:
             LogTool.info('Finish request! status_code: {code} response_time: {time}ms'.format(code=response.status_code,
                                                                                               time=response_time))
-        return response.json()
+        return response
 
-params={
-"city_id" : "110900",
-"access_token" : "",
-"client_guid" : 3232235777,
-"client_timestamp" : 1509415724,
-"app_id" : 10011,
-"client_version" : "1.0.1",
-"app_usign" : "avdjMd3Lx930nKrZTSeQE/caSSw=",
-}
-print(RequestHttp.get('/common/channel/hunlifuwu/index', param=params))
+
