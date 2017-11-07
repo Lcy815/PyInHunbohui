@@ -1,7 +1,8 @@
 ---
 DataDriven:
   - excel:
-       filePath: C:\Users\Administrator\Desktop\test.xlsx
+       read_path: C:\Users\Administrator\Desktop\test.xlsx
+       write_path: C:\Users\Administrator\Desktop\test1.xlsx
        testSheet:  test
   - mysql:
        type:

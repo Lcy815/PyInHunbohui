@@ -11,7 +11,7 @@ TEST_CASE:
     name: /common/channel/hunlifuwu/index
     params:
         city_id: 110900
-        access_token:
+        access_token: ''
         client_guid: 3232235777
         client_timestamp: 1509415724
         app_id: 10011
@@ -23,12 +23,12 @@ TEST_CASE:
     response:
   - number: 2
     method: GET
-    execute: 1
+    execute: 0
     design: 正常参数
     name: /common/channel/hunlifuwu/index
     params:
         city_id: 110900
-        access_token:
+        access_token: ~
         client_guid: 3232235777
         client_timestamp: 1509415724
         app_id: 10011

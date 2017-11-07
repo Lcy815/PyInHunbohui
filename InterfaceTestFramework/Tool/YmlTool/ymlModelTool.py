@@ -1,6 +1,8 @@
 # encoding=utf-8
+from Base.HttpRequest.baseRequest import RequestHttp
 from Tool.Config.configTool import ConfigTool
 from Database.test_model import TestModel
+from Base.HttpRequest.result_check import CheckResult
 
 
 class YmlModelTool(object):
@@ -22,7 +24,7 @@ class YmlModelTool(object):
                                    design=data['design'],
                                    name=data['name'],
                                    params=data['params'],
-                                   check_value=data['check_value'],
+                                   check_value=YmlModelTool.change_check_value(data['check_value']),
                                    check_type=data['check_type'],
                                    result=data['result'],
                                    response=data['response'])
@@ -33,6 +35,29 @@ class YmlModelTool(object):
                 model_list.append(test_model)
         return model_list
 
+    @staticmethod
+    def change_check_value(check_value):
+        if not check_value:
+            return {}
+        value_list = check_value.split(',')
+        check_dict = {}
+        for value in value_list:
+            dict_value = value.split('=')
+            check_dict[dict_value[0]] = dict_value[1]
+        return check_dict
 
-print(YmlModelTool.read_from_yml('/Config/case_model.yml'))
+# a = 'err=hapn.ok,title=喜铺'
+# dic = YmlModelTool.change_check_value(a)
+# print(dic)
+
+
+case = YmlModelTool.read_from_yml('/Config/case_model.yml', execute='TRUE')
+model = case[0]
+print(model.check_value)
+#
+data = RequestHttp.get(model.name, param=model.params)
+
+CheckResult.is_exist(data, model.check_value)
+
+
 
