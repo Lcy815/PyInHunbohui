@@ -1,0 +1,19 @@
+Hunbasha:
+    check_items:
+         - url: https://bj.jiehun.com.cn
+           describe:  ◊“≥
+#         - url: https://bj.jiehun.com.cn/hunshasheying/storelists?source=BJIndexFL_1_1&ordersrc=BJIndexFL_1_1
+#           describe: ªÈ…¥…„”∞µÍ∆Ã¡–±Ì“≥
+#         - url: https://bj.jiehun.com.cn/dapinpaisheying/10056/
+#           describe: µÍ∆ÃœÍ«È“≥
+
+
+Email:
+    Host: smtp.qq.com
+    Port: 465
+    Pass: itrwvjhjxupgbhhc
+    From_mail: 331957324@qq.com
+    To_mail: 252624008@qq.com,765674202@qq.com
+Log:
+    Path: E:\apiLog\hunbasha.log
+    Save_path: E:\
