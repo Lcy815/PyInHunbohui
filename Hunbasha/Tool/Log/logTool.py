@@ -1,6 +1,9 @@
 # encoding=utf-8
 import logging
 from Tool.Config.configTool import ConfigTool
+import sys
+import io
+# sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')
 
 
 class LogTool(object):

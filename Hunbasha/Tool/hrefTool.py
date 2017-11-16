@@ -2,6 +2,9 @@
 import re
 import requests
 import threading
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')
 
 
 class HrefTest(object):
@@ -20,7 +23,8 @@ class HrefTest(object):
             print('error-{url}    message-{e}'.format(url=url, e=e))
         else:
             # print(response.text)
-            pattern = re.compile('<a.+href="(.*?)".{0}=?"?.*"?>(.*?)</a>')
+            # pattern = re.compile('<a.*href="(.*?)".{0}=?"?.*"?>(.*?)</a>')
+            pattern = re.compile('href="(.*?)"{1}.?.{0,10}?=?"?.*"?>(.+)?</a>')
             # pattern = re.compile('<a\b[^>]+\bhref="([^"]*)"[^>]*>([\s\S]*?)</a>')
             items = re.findall(pattern, response.text)
             return items
@@ -33,7 +37,7 @@ class HrefTest(object):
         :param headers:   请求头
         :return:          返回response对象
         '''
-        return requests.request('GET', url, headers=headers)
+        return requests.request('GET', url, headers=headers, timeout=15)
 
     @classmethod
     def change_url(cls, url, url_base):
@@ -54,54 +58,15 @@ class HrefTest(object):
         else:
             return False
 
-    @classmethod
-    def href_test(cls):
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'
-        }
-        lock = threading.RLock()
-        error_lists = []
-        url = 'http://bj.jiehun.com.cn'
+if __name__ == '__main__':
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6',
+        'Host': 'bj.jiehun.com.cn',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    }
+    a = HrefTest.get_hostsit_href(
+        'https://bj.jiehun.com.cn/', headers)
 
-        items = HrefTest.get_hostsit_href(url, headers)
 
-        gl_num = len(items)
-
-        def url_request(num):
-            global gl_num
-            gl_num = num
-            while gl_num > 0:
-                lock.acquire()
-                item = items[gl_num - 1]
-                print(item, gl_num)
-                gl_num -= 1
-                lock.release()
-
-                url_href = item[0]
-                if url_href.startswith('http'):
-                    final_url = url_href
-                elif url_href.startswith('//'):
-                    final_url = 'http:' + url_href
-                else:
-                    final_url = url + url_href
-                try:
-                    response = HrefTest.get(final_url, headers=headers)
-                except Exception as e:
-                    error_dict = {'url': item[0], 'title': item[1], 'errMessage': e}
-                    error_lists.append(error_dict)
-                else:
-                    if not response.status_code == 200:
-                        error_dict = {'url': item[0], 'title': item[1]}
-                        error_lists.append(error_dict)
-
-        thread_list = []
-        for i in range(15):
-            t = threading.Thread(target=url_request(gl_num))
-            thread_list.append(t)
-            t.start()
-
-        for t in thread_list:
-            t.join()
-        print(error_lists)
 
 

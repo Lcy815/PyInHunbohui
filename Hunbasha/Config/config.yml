@@ -2,11 +2,113 @@ Hunbasha:
     check_items:
          - url: https://bj.jiehun.com.cn
            describe: 首页
+           is_checkIndex: False
+#         - url: https://bj.jiehun.com.cn/hunshasheying/?source=BJIndexFL_1_0&ordersrc=BJIndexFL_1_0
+#           describe: 拍婚照频道页
+#           is_checkIndex: False
 #         - url: https://bj.jiehun.com.cn/hunshasheying/storelists?source=BJIndexFL_1_1&ordersrc=BJIndexFL_1_1
-#           describe: 婚纱摄影店铺列表页
-#         - url: https://bj.jiehun.com.cn/dapinpaisheying/10056/
-#           describe: 店铺详情页
-
+#           describe: 本地拍摄
+#           is_checkIndex: True
+#         - url: https://lvpai.jiehun.com.cn/?source=BJIndexFL_1_2&ordersrc=BJIndexFL_1_2
+#           describe: 旅拍
+#           is_checkIndex: False
+##   --------------------------------订喜宴
+#         - url: https://bj.jiehun.com.cn/xiyanjiudian/?source=BJIndexFL_2_0&ordersrc=BJIndexFL_2_0
+#           describe: 订喜宴
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/hunlihuisuo/storelists/?source=BJIndexFL_2_1&ordersrc=BJIndexFL_2_1
+#           describe: 婚礼会所
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/xinjijiudian/storelists/?source=BJIndexFL_2_2&ordersrc=BJIndexFL_2_2
+#           describe: 星级酒店
+#           is_checkIndex: True
+##   --------------------------------找婚庆
+#         - url: https://bj.jiehun.com.cn/hunlifuwu/?source=BJIndexFL_3_0&ordersrc=BJIndexFL_3_0
+#           describe: 找婚庆
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/hunlifuwu/storelists?source=BJIndexFL_3_1&ordersrc=BJIndexFL_3_1
+#           describe: 本地婚礼
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/hunlizhuchi/65466/?source=BJIndexFL_3_2&ordersrc=BJIndexFL_3_2
+#           describe: 婚礼主持
+#           is_checkIndex: True
+##   --------------------------------订婚戒
+#         - url: https://bj.jiehun.com.cn/hunjiashoushi/?source=BJIndexFL_4_0&ordersrc=BJIndexFL_4_0
+#           describe: 订婚戒
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/hunjiashoushi/hunjie?source=BJIndexFL_4_1&ordersrc=BJIndexFL_4_1
+#           describe: 钻戒
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/hunjiashoushi/duijie?source=BJIndexFL_4_2&ordersrc=BJIndexFL_4_2
+#           describe: 对戒
+#           is_checkIndex: True
+##   --------------------------------选婚纱
+#         - url: https://bj.jiehun.com.cn/hunshalifu/?source=BJIndexFL_5_0&ordersrc=BJIndexFL_5_0
+#           describe: 选婚纱
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/nvshihunsha/storelists/?source=BJIndexFL_5_1&ordersrc=BJIndexFL_5_1
+#           describe: 女式婚纱
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/nanshilifu/storelists/?source=BJIndexFL_5_2&ordersrc=BJIndexFL_5_2
+#           describe: 男士礼服
+#           is_checkIndex: True
+##   --------------------------------淘婚品
+#         - url: https://bj.jiehun.com.cn/jiehunbaihuo/?source=BJIndexFL_6_0&ordersrc=BJIndexFL_6_0
+#           describe: 淘婚品
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/zhuanti/jhmall_jiehunbaihuo_pc/zt_bh1102_16085/?source=BJIndexFL_6_1&ordersrc=BJIndexFL_6_1
+#           describe: 喜宴名酒
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/zhuanti/jhmall_jiehunbaihuo_pc/zt_jiajv1026_15886/?source=BJIndexFL_6_2&ordersrc=BJIndexFL_6_2
+#           describe: 家居家纺
+#           is_checkIndex: True
+##   --------------------------------度蜜月
+#         - url: https://bj.jiehun.com.cn/lvyou/?source=BJIndexFL_7_0&ordersrc=BJIndexFL_7_0
+#           describe: 度蜜月
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/lvyou/lyhl?source=BJIndexFL_7_2&ordersrc=BJIndexFL_7_2
+#           describe: 海外婚礼
+#           is_checkIndex: True
+##   --------------------------------美新娘
+#         - url: https://bj.jiehun.com.cn/hbh/zt_meirongpc_2977/?source=BJIndexFL_8_0&ordersrc=BJIndexFL_8_0
+#           describe: 美新娘
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/xinniangzaoxing/meirong?source=BJIndexFL_8_1&ordersrc=BJIndexFL_8_1
+#           describe: 皮肤美容
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/xinniangzaoxing/xianti?source=BJIndexFL_8_2&ordersrc=BJIndexFL_8_2
+#           describe: 纤体瘦身
+#           is_checkIndex: True
+##   --------------------------------租婚车
+#         - url: https://bj.jiehun.com.cn/zuche/?source=BJIndexFL_9_0&ordersrc=BJIndexFL_9_0
+#           describe: 租婚车
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/zuche/package/?source=BJIndexFL_9_1&ordersrc=BJIndexFL_9_1
+#           describe: 热门套餐
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/zuche/car/?source=BJIndexFL_9_2&ordersrc=BJIndexFL_9_2
+#           describe: 人气爆款
+#           is_checkIndex: True
+##   --------------------------------孕婴童
+#         - url: https://bj.yingbasha.com/?jh_src=BJIndexHead_FL_12&source=BJIndexFL_11_0&ordersrc=BJIndexFL_11_0
+#           describe: 孕婴童
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/baobaozaojiao/storelists/?source=BJIndexFL_11_1&ordersrc=BJIndexFL_11_1
+#           describe: 早教育儿
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/yueziyanghu/storelists/?source=BJIndexFL_11_2&ordersrc=BJIndexFL_11_2
+#           describe: 月子养护
+#           is_checkIndex: True
+##   --------------------------------装新房
+#         - url: https://bj.jiehun.com.cn/jiehunbaihuo/chuangshangyongpin/?source=BJIndexFL_12_0&ordersrc=BJIndexFL_12_0
+#           describe: 装新房
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/jiehunbaihuo/chuangshangyongpin/?source=BJIndexFL_12_1&ordersrc=BJIndexFL_12_1
+#           describe: 婚房装饰
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/jiehunbaihuo/chuangshangyongpin/?source=BJIndexFL_12_2&ordersrc=BJIndexFL_12_2
+#           describe: 时尚家纺
+#           is_checkIndex: True
 
 Email:
     Host: smtp.qq.com
