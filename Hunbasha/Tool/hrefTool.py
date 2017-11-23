@@ -21,6 +21,7 @@ class HrefTest(object):
             response = requests.request('GET', url=url, headers=headers)
         except Exception as e:
             print('error-{url}    message-{e}'.format(url=url, e=e))
+            return []
         else:
             # print(response.text)
             # pattern = re.compile('<a.*href="(.*?)".{0}=?"?.*"?>(.*?)</a>')
@@ -37,7 +38,7 @@ class HrefTest(object):
         :param headers:   请求头
         :return:          返回response对象
         '''
-        return requests.request('GET', url, headers=headers, timeout=15)
+        return requests.request('GET', url, headers=headers)
 
     @classmethod
     def change_url(cls, url, url_base):

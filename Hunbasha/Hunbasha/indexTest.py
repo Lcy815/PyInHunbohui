@@ -25,6 +25,7 @@ class HunIndex:
         self.url = url
         self.is_checkIndex = is_checkIndex
         self.execute_items = []
+        self.sum_url = 0
 
     def get_index_urlitem(self):
         LogTool.info('开始获取页面url,当前页面：{url}'.format(url=self.url))
@@ -36,6 +37,7 @@ class HunIndex:
             if HrefTest.check_url(item[0]):
                item1 = (HrefTest.change_url(item[0], index_url), item[1])
                self.url_queue.put(item1, block=True, timeout=5)
+        self.sum_url = self.url_queue.qsize()
         LogTool.info('页面url获取完成，共{sum_url}个url'.format(sum_url=self.url_queue.qsize()))
 
     def _parse_url(self, item):
@@ -48,14 +50,16 @@ class HunIndex:
             error = list(item)
             print('error', list(item))
             error.append('error_message=%s' % e)
+            error.append('所在页面：%s' % self.url)
             self.error_list.append(error)
         else:
             if not response.status_code == 200:
                 LogTool.error('请求失败，url=%s, error_code:%s' % (str(item[0]), response.status_code))
                 print('error-%s error_code:%s' % (item[0], response.status_code))
-                error = list(item).append('error_message=%s' % response.status_code)
-                print('error', item)
-                print('----', error)
+                error = list(item)
+                error.append('error_message=%s' % response.status_code)
+                error.append('所在页面：%s' % self.url)
+                print('----：', error)
                 self.error_list.append(error)
             else:
                 LogTool.info('请求成功，测试通过，url=%s,title=%s' % (str(item[0]), str(item[1])))

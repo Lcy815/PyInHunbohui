@@ -42,18 +42,14 @@ class MainTest:
                 self.result_list.append(error)
         self.result = ' %s \n execute_time:%d s \n 遍历页面：%s \n 遍历url:%s \n 错误url: %s \n' % (case.describe,
                                                                                       case.execute_time, case.url,
-                                                                                      str(len(case.execute_items)),
+                                                                                      str(case.sum_url),
                                                                                       self.result_list)
         return self.result
 
-    def execute_test(self):
+    def execute_test(self, index_items):
         url_items = self.get_checkurl()
         print(url_items)
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6',
-        }
-        index_url = 'https://bj.jiehun.com.cn'
-        index_items = HrefTest.get_hostsit_href(index_url, headers)
+
         for item in url_items:
             url = item['url']
             describe = item['describe']
@@ -64,17 +60,24 @@ class MainTest:
             # print('%s execute time:%d s' % (describe, int(case.stop_time-case.start_time)))
             case.execute_time = int(case.stop_time-case.start_time)
             case.describe = describe
-            self.error_list.extend(case.error_list)
-            self.sum_execute += len(case.items)
+            if case.error_list:
+                self.error_list.extend(case.error_list)
+            if case.items:
+                self.sum_execute += len(case.items)
             self.execute_time += case.execute_time
             print(self.check_result(case))
 
 if __name__ == '__main__':
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6',
+    }
+    index_url = 'https://bj.jiehun.com.cn'
+    index_items = HrefTest.get_hostsit_href(index_url, headers)
     a = MainTest()
     # 执行测试
-    a.execute_test()
+    a.execute_test(index_items)
     print('总执行时间：%d' % a.execute_time)
-    # a.save_log()
+    print(a.error_list)
+    a.save_log()
 
-10.38
 
