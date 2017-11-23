@@ -4,11 +4,10 @@ import requests
 import threading
 import sys
 import io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')
+# sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')
 
 
 class HrefTest(object):
-
     @classmethod
     def get_hostsit_href(cls, url, headers):
         '''

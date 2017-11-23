@@ -1,4 +1,6 @@
+# encoding=utf-8
 Hunbasha:
+    index_url: https://bj.jiehun.com.cn
     check_items:
 #   --------------------------------城市站  北京
          - url: https://bj.jiehun.com.cn
@@ -120,3 +122,4 @@ Email:
 Log:
     Path: E:\apiLog\hunbasha.log
     Save_path: E:\
+
