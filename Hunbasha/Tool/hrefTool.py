@@ -37,7 +37,7 @@ class HrefTest(object):
         :param headers:   请求头
         :return:          返回response对象
         '''
-        return requests.request('GET', url, headers=headers)
+        return requests.request('GET', url, headers=headers, timeout=30)
 
     @classmethod
     def change_url(cls, url, url_base):

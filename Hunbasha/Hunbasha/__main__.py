@@ -15,6 +15,8 @@ import Tool.Log.logTool
 import Tool.Config.configTool
 import Hunbasha.indexTest
 import time
+import Tool.Email.emailTool
+import Tool.FileTool.fileTool
 
 
 class MainTest:
@@ -32,6 +34,7 @@ class MainTest:
         self.result = None
         self.result_list = []
         self.execute_time = 0
+        self.update = True
 
     @staticmethod
     def get_checkurl():
@@ -54,6 +57,32 @@ class MainTest:
 
         src.close()
         dst.close()
+
+    def save_error(self):
+        error_path = Tool.Config.configTool.ConfigTool.get('Error_file', 'Path')
+        if Tool.FileTool.fileTool.FileTool.is_exists(error_path):
+            text = Tool.FileTool.fileTool.FileTool.read_file(error_path)
+            # 如果错误文档为空并且错误链接列表为空，不需要更新错误信息
+            if not text and len(self.error_list) == 0:
+                self.update = False
+                return
+            # 如果最新错误列表为空，不需要更新错误信息
+            elif len(self.error_list) == 0:
+                self.update = False
+                return
+            # 如果最新错误列表不为空，错误文本为空，则更新文本
+            elif not text and len(self.error_list) > 0:
+                Tool.FileTool.fileTool.FileTool.write_cover_file(error_path, str(self.error_list))
+                return
+            # 如果都不为空，判断最新错误与错误文档是否有不同，如有不同，则更新文本
+            for error in self.error_list:
+                if error[0] not in text:
+                    Tool.FileTool.fileTool.FileTool.write_cover_file(error_path, str(self.error_list))
+                    return
+            self.update = False
+        else:
+            Tool.FileTool.fileTool.FileTool.write_cover_file(error_path, str(self.error_list))
+
 
     def check_result(self, case):
         '''
@@ -108,6 +137,15 @@ if __name__ == '__main__':
     # 执行测试
     a.execute_test(index_items)
     print('总执行时间：%d' % a.execute_time)
-    a.save_log()
+    # a.save_log()
+    a.save_error()
+    print(a.update)
+    # 如果错误文本有更新，发送邮件提醒
+    if a.update:
+        email_text = ''
+        for error in a.error_list:
+            email_text += '%s \n' % error
+        Tool.Email.emailTool.MailTool.send_text_mail(email_text, '错误信息')
+
 
 
