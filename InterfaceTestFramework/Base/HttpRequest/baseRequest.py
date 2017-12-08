@@ -4,6 +4,7 @@ import sys
 import io
 from Tool.Config.configTool import ConfigTool
 from Tool.Logger.logTool import LogTool
+
 import time
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')
