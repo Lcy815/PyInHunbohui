@@ -53,6 +53,11 @@ class ExcelTool(object):
 
     @staticmethod
     def change_check_value(check_value):
+        '''
+           修改检查返回值的格式
+        :param check_value: 需要检查的值
+        :return:   返回字典格式
+        '''
         if not check_value:
             return {}
         value_list = check_value.split(',')

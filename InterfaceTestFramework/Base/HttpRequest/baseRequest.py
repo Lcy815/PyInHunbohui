@@ -2,9 +2,10 @@
 import requests
 import sys
 import io
-from Tool.Config.configTool import ConfigTool
-from Tool.Logger.logTool import LogTool
-
+# from Tool.Log.logTool import LogTool
+import Tool.ConfigSet.configTool
+from Tool.ConfigSet.configTool import ConfigTool
+from Tool.Log.logTool import LogTool
 import time
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gb18030')

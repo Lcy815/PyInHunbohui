@@ -1,8 +1,8 @@
 # encoding=utf-8
 from Base.HttpRequest.baseRequest import RequestHttp
 
-from Tool.Logger.logTool import LogTool
-
+# from Tool.Log.logTool import LogTool
+from Tool.Log.logTool import LogTool
 
 class CheckResult(object):
 

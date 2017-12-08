@@ -1,6 +1,6 @@
 # encoding=utf-8
 import logging
-from Tool.Config.configTool import ConfigTool
+from Tool.ConfigSet.configTool import ConfigTool
 
 
 class LogTool(object):
