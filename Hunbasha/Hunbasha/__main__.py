@@ -59,6 +59,10 @@ class MainTest:
         dst.close()
 
     def save_error(self):
+        '''
+           保存错误信息，与上次的错误信息校对，如果相同则不保存，如果有变动，则保存新的错误信息
+        :return:
+        '''
         error_path = Tool.Config.configTool.ConfigTool.get('Error_file', 'Path')
         if Tool.FileTool.fileTool.FileTool.is_exists(error_path):
             text = Tool.FileTool.fileTool.FileTool.read_file(error_path)
@@ -82,7 +86,6 @@ class MainTest:
             self.update = False
         else:
             Tool.FileTool.fileTool.FileTool.write_cover_file(error_path, str(self.error_list))
-
 
     def check_result(self, case):
         '''

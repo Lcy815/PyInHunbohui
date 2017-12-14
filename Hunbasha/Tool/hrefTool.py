@@ -41,7 +41,12 @@ class HrefTest(object):
 
     @classmethod
     def change_url(cls, url, url_base):
-
+        '''
+           改变url （因为有的链接只有后半部分，没有带域名）
+        :param url:  原始抓取到的url
+        :param url_base: 基本域名
+        :return: 拼接成正常链接
+        '''
         if url.startswith('http'):
             final_url = url
         elif url.startswith('//'):

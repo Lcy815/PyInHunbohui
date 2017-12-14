@@ -42,11 +42,13 @@ class HunIndex:
         :return:
         '''
         Tool.Log.logTool.LogTool.info('开始获取页面url,当前页面：{url}'.format(url=self.url))
+        # 检查是否与首页链接去重复
         if self.is_checkIndex:
             self.execute_items.extend([item for item in self.items if item not in self.index_items])
         else:
             self.execute_items.extend(self.items)
         for item in list(set(self.execute_items)):
+            # 只检查正常链接，http开头
             if Tool.hrefTool.HrefTest.check_url(item[0]):
                item1 = (Tool.hrefTool.HrefTest.change_url(item[0], index_url), item[1])
                self.url_queue.put(item1, block=True, timeout=5)

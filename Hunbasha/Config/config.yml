@@ -16,103 +16,103 @@ Hunbasha:
 #           describe: 旅拍
 #           is_checkIndex: False
 #   --------------------------------订喜宴
-         - url: https://bj.jiehun.com.cn/xiyanjiudian/
-           describe: 订喜宴
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/hunlihuisuo/storelists/
-           describe: 婚礼会所
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/xinjijiudian/storelists/
-           describe: 星级酒店
-           is_checkIndex: True
-#   --------------------------------找婚庆
-         - url: https://bj.jiehun.com.cn/hunlifuwu/
-           describe: 找婚庆
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/hunlifuwu/storelists
-           describe: 本地婚礼
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/hunlizhuchi/65466/
-           describe: 婚礼主持
-           is_checkIndex: True
-#   --------------------------------订婚戒
-         - url: https://bj.jiehun.com.cn/hunjiashoushi/
-           describe: 订婚戒
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/hunjiashoushi/hunjie
-           describe: 钻戒
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/hunjiashoushi/duijie
-           describe: 对戒
-           is_checkIndex: True
-#   --------------------------------选婚纱
-         - url: https://bj.jiehun.com.cn/hunshalifu/
-           describe: 选婚纱
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/nvshihunsha/storelists/
-           describe: 女式婚纱
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/nanshilifu/storelists/
-           describe: 男士礼服
-           is_checkIndex: True
-#   --------------------------------淘婚品
-         - url: https://bj.jiehun.com.cn/jiehunbaihuo/
-           describe: 淘婚品
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/zhuanti/jhmall_jiehunbaihuo_pc/zt_bh1102_16085/
-           describe: 喜宴名酒
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/zhuanti/jhmall_jiehunbaihuo_pc/zt_jiajv1026_15886/
-           describe: 家居家纺
-           is_checkIndex: True
-#   --------------------------------度蜜月
-         - url: https://bj.jiehun.com.cn/lvyou/
-           describe: 度蜜月
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/lvyou/lyhl
-           describe: 海外婚礼
-           is_checkIndex: True
-#   --------------------------------美新娘
-         - url: https://bj.jiehun.com.cn/hbh/zt_meirongpc_2977/
-           describe: 美新娘
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/xinniangzaoxing/meirong
-           describe: 皮肤美容
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/xinniangzaoxing/xianti
-           describe: 纤体瘦身
-           is_checkIndex: True
-#   --------------------------------租婚车
-         - url: https://bj.jiehun.com.cn/zuche/
-           describe: 租婚车
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/zuche/package/
-           describe: 热门套餐
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/zuche/car/
-           describe: 人气爆款
-           is_checkIndex: True
-
-#   --------------------------------孕婴童
-         - url: https://bj.yingbasha.com/
-           describe: 孕婴童
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/baobaozaojiao/storelists/
-           describe: 早教育儿
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/yueziyanghu/storelists/
-           describe: 月子养护
-           is_checkIndex: True
-#   --------------------------------装新房
-         - url: https://bj.jiehun.com.cn/jiehunbaihuo/chuangshangyongpin/
-           describe: 装新房
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/jiehunbaihuo/chuangshangyongpin/
-           describe: 婚房装饰
-           is_checkIndex: True
-         - url: https://bj.jiehun.com.cn/jiehunbaihuo/chuangshangyongpin/
-           describe: 时尚家纺
-           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/xiyanjiudian/
+#           describe: 订喜宴
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/hunlihuisuo/storelists/
+#           describe: 婚礼会所
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/xinjijiudian/storelists/
+#           describe: 星级酒店
+#           is_checkIndex: True
+##   --------------------------------找婚庆
+#         - url: https://bj.jiehun.com.cn/hunlifuwu/
+#           describe: 找婚庆
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/hunlifuwu/storelists
+#           describe: 本地婚礼
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/hunlizhuchi/65466/
+#           describe: 婚礼主持
+#           is_checkIndex: True
+##   --------------------------------订婚戒
+#         - url: https://bj.jiehun.com.cn/hunjiashoushi/
+#           describe: 订婚戒
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/hunjiashoushi/hunjie
+#           describe: 钻戒
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/hunjiashoushi/duijie
+#           describe: 对戒
+#           is_checkIndex: True
+##   --------------------------------选婚纱
+#         - url: https://bj.jiehun.com.cn/hunshalifu/
+#           describe: 选婚纱
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/nvshihunsha/storelists/
+#           describe: 女式婚纱
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/nanshilifu/storelists/
+#           describe: 男士礼服
+#           is_checkIndex: True
+##   --------------------------------淘婚品
+#         - url: https://bj.jiehun.com.cn/jiehunbaihuo/
+#           describe: 淘婚品
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/zhuanti/jhmall_jiehunbaihuo_pc/zt_bh1102_16085/
+#           describe: 喜宴名酒
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/zhuanti/jhmall_jiehunbaihuo_pc/zt_jiajv1026_15886/
+#           describe: 家居家纺
+#           is_checkIndex: True
+##   --------------------------------度蜜月
+#         - url: https://bj.jiehun.com.cn/lvyou/
+#           describe: 度蜜月
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/lvyou/lyhl
+#           describe: 海外婚礼
+#           is_checkIndex: True
+##   --------------------------------美新娘
+#         - url: https://bj.jiehun.com.cn/hbh/zt_meirongpc_2977/
+#           describe: 美新娘
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/xinniangzaoxing/meirong
+#           describe: 皮肤美容
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/xinniangzaoxing/xianti
+#           describe: 纤体瘦身
+#           is_checkIndex: True
+##   --------------------------------租婚车
+#         - url: https://bj.jiehun.com.cn/zuche/
+#           describe: 租婚车
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/zuche/package/
+#           describe: 热门套餐
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/zuche/car/
+#           describe: 人气爆款
+#           is_checkIndex: True
+#
+##   --------------------------------孕婴童
+#         - url: https://bj.yingbasha.com/
+#           describe: 孕婴童
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/baobaozaojiao/storelists/
+#           describe: 早教育儿
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/yueziyanghu/storelists/
+#           describe: 月子养护
+#           is_checkIndex: True
+##   --------------------------------装新房
+#         - url: https://bj.jiehun.com.cn/jiehunbaihuo/chuangshangyongpin/
+#           describe: 装新房
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/jiehunbaihuo/chuangshangyongpin/
+#           describe: 婚房装饰
+#           is_checkIndex: True
+#         - url: https://bj.jiehun.com.cn/jiehunbaihuo/chuangshangyongpin/
+#           describe: 时尚家纺
+#           is_checkIndex: True
 
 Email:
     Host: smtp.qq.com
