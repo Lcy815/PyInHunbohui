@@ -18,3 +18,7 @@ python log模块
 python smtplib 邮件相关
 python file相关
 python unittest相关
+
+需要导入模块：
+PyYaml
+requests
