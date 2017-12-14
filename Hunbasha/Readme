@@ -6,3 +6,15 @@ Hunbasha: Ö÷³ÌÐò£¬mainÄ£¿éÎª³ÌÐòÆô¶¯Ä£¿é£¬°üº¬ ÈÕÖ¾±£´æ£¬´íÎóÐÅÏ¢±£´æ£¬½á¹ûÉ¸Ñ¡£
 Tool: ¹¤¾ßÀàÄ£¿é£¬°üº¬ÅäÖÃÎÄ¼þ²Ù×÷Àà£¨yaml²Ù×÷£©£¬ÓÊ¼þÏà¹Ø¹¤¾ß£¨ÎÄ±¾ÓÊ¼þ£¬¸½¼þÓÊ¼þ£¬htmlÓÊ¼þ£©£¬ÎÄ¼þ²Ù×÷Àà£¨fileÏà¹Ø£¬
       ÎÄ¼þ¼Ð´´½¨£¬ÎÄ¼þ¿ÕÅÐ¶Ï£¬ÎÄ¼þÐ´Èë£¬ÎÄ¼þ¸²¸Ç£¬ÎÄ¼þ¶Ô±ÈÅÐ¶Ï£©£¬LogÀà£¨ÈÕÖ¾Ïà¹ØÅäÖÃ£©
 hrefTool: Á´½ÓÇëÇóÏà¹Ø²Ù×÷£¨requests£©£¬ÕýÔòÌáÈ¡Á´½Ó²Ù×÷£¨reÄ£¿é£©
+Unittest: µ¥Ôª²âÊÔ£¬»¹Ã»À´µÃ¼°Ð´£¬Ó¦¸ÃÊÇÐ´ÍêÒ»¸öÄ£¿é¹¦ÄÜÐ´Ò»¸öµ¥Ôª²âÊÔ
+
+
+Ïà¹ØÖªÊ¶£º
+python reÄ£¿éÕýÔòÏà¹Ø
+yamlÓï·¨
+python ¶àÏß³Ì£¬Ïß³Ì³ØÏà¹Ø
+python requestsÄ£¿é
+python logÄ£¿é
+python smtplib ÓÊ¼þÏà¹Ø
+python fileÏà¹Ø
+python unittestÏà¹Ø

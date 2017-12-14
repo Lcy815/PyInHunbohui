@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8edf5ea6-49b6-4bfe-b800-40eb3f66819e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Hunbasha/Readme" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Hunbasha/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Hunbasha/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Hunbasha/Config/config.yml" afterPath="$PROJECT_DIR$/../Hunbasha/Config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Hunbasha/Hunbasha/__main__.py" afterPath="$PROJECT_DIR$/../Hunbasha/Hunbasha/__main__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Hunbasha/Hunbasha/indexTest.py" afterPath="$PROJECT_DIR$/../Hunbasha/Hunbasha/indexTest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Hunbasha/Tool/hrefTool.py" afterPath="$PROJECT_DIR$/../Hunbasha/Tool/hrefTool.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../appium-hunbasha/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../appium-hunbasha/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../appium-hunbasha/appium_api.py" afterPath="$PROJECT_DIR$/../appium-hunbasha/appium_api.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../appium-hunbasha/appiumtest.py" afterPath="$PROJECT_DIR$/../appium-hunbasha/appiumtest.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Hunbasha/Readme" afterPath="$PROJECT_DIR$/../Hunbasha/Readme" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -340,7 +332,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="60" y="45" width="1261" height="798" extended-state="1" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2173189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
